@@ -1,11 +1,11 @@
 PODS:
-  - Cache (5.2.0)
+  - Cache (5.3.0)
   - Gallery (2.2.2)
   - Hue (5.0.0)
-  - Imaginary (4.2.0):
-    - Cache (~> 5.0)
-  - Lightbox (2.3.0):
-    - Imaginary (~> 4.0)
+  - Imaginary (4.3.1):
+    - Cache (~> 5.3.0)
+  - Lightbox (2.4.2):
+    - Imaginary (~> 4.3.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -29,15 +29,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Gallery:
-    :commit: a9cb44eee22968a989b0caf0b2d2f00b4b7af383
+    :commit: 8e96a691c2505cf01c6177034a1dfb48181481fa
     :git: https://github.com/loloa/Gallery.git
 
 SPEC CHECKSUMS:
-  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
+  Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
   Gallery: 2e9473ef9465f785cd16a700a16794385223216e
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
-  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
-  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
+  Imaginary: 18c5bba364229eef383b925199db442e71d175e1
+  Lightbox: 8837c35c1150fa0410d94296e369b432d37f18c7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 6aec193bb9b0e587961735ea7dc428a02cb6c818

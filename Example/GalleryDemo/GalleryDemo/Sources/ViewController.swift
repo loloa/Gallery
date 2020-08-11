@@ -6,6 +6,7 @@ import AVKit
 import SVProgressHUD
 
 class ViewController: UIViewController, LightboxControllerDismissalDelegate, GalleryControllerDelegate {
+ 
 
   var button: UIButton!
   var gallery: GalleryController!
@@ -68,20 +69,36 @@ class ViewController: UIViewController, LightboxControllerDismissalDelegate, Gal
     }
   }
 
-  func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
-    controller.dismiss(animated: true, completion: nil)
-    gallery = nil
-  }
+//  func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+//    controller.dismiss(animated: true, completion: nil)
+//    gallery = nil
+//  }
+//
+//  func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+//    LightboxConfig.DeleteButton.enabled = true
+//
+//    SVProgressHUD.show()
+//    Image.resolve(images: images, completion: { [weak self] resolvedImages in
+//      SVProgressHUD.dismiss()
+//      self?.showLightbox(images: resolvedImages.compactMap({ $0 }))
+//    })
+//  }
+  
+  
+  func galleryController(_ controller: GalleryController, didSelectImages images: [ImageWrapper]) {
+     controller.dismiss(animated: true, completion: nil)
+     gallery = nil
+   }
+   
+   func galleryController(_ controller: GalleryController, requestLightbox images: [ImageWrapper]) {
+      LightboxConfig.DeleteButton.enabled = true
 
-  func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
-    LightboxConfig.DeleteButton.enabled = true
-
-    SVProgressHUD.show()
-    Image.resolve(images: images, completion: { [weak self] resolvedImages in
-      SVProgressHUD.dismiss()
-      self?.showLightbox(images: resolvedImages.compactMap({ $0 }))
-    })
-  }
+        SVProgressHUD.show()
+        Image.resolve(images: images, completion: { [weak self] resolvedImages in
+          SVProgressHUD.dismiss()
+          self?.showLightbox(images: resolvedImages.compactMap({ $0 }))
+        })
+   }
 
   // MARK: - Helper
 

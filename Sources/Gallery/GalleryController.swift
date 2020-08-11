@@ -3,9 +3,9 @@ import AVFoundation
 
 public protocol GalleryControllerDelegate: class {
 
-  func galleryController(_ controller: GalleryController, didSelectImages images: [Image])
+  func galleryController(_ controller: GalleryController, didSelectImages images: [ImageWrapper])
   func galleryController(_ controller: GalleryController, didSelectVideo video: Video)
-  func galleryController(_ controller: GalleryController, requestLightbox images: [Image])
+  func galleryController(_ controller: GalleryController, requestLightbox images: [ImageWrapper])
   func galleryControllerDidCancel(_ controller: GalleryController)
 }
 
