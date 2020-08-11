@@ -1,17 +1,36 @@
 import UIKit
 import Photos
 
-/// Wrap a PHAsset
-public class Image: Equatable {
 
-  public let asset: PHAsset
 
-  // MARK: - Initialization
-  
-  init(asset: PHAsset) {
-    self.asset = asset
-  }
+public class ImageWrapper {
+    
+   public let asset: PHAsset
+    
+    // MARK: - Initialization
+    
+    init(asset: PHAsset) {
+      self.asset = asset
+    }
 }
+
+
+public class Image: ImageWrapper, Equatable {
+
+ 
+}
+
+///// Wrap a PHAsset
+//public class Image: Equatable {
+//
+//  public let asset: PHAsset
+//
+//  // MARK: - Initialization
+//
+//  init(asset: PHAsset) {
+//    self.asset = asset
+//  }
+//}
 
 // MARK: - UIImage
 
