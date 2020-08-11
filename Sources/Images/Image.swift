@@ -36,6 +36,37 @@ public class ImageWrapper {
           completion(image)
       }
     }
+    
+
+    /// Resolve an array of Image
+    ///
+    /// - Parameters:
+    ///   - images: The array of Image
+    ///   - size: The target size for all images
+    ///   - completion: Called when operations completion
+    public static func resolve(images: [ImageWrapper], completion: @escaping ([UIImage?]) -> Void) {
+      let dispatchGroup = DispatchGroup()
+      var convertedImages = [Int: UIImage]()
+
+      for (index, image) in images.enumerated() {
+        dispatchGroup.enter()
+
+        image.resolve(completion: { resolvedImage in
+          if let resolvedImage = resolvedImage {
+            convertedImages[index] = resolvedImage
+          }
+
+          dispatchGroup.leave()
+        })
+      }
+
+      dispatchGroup.notify(queue: .main, execute: {
+        let sortedImages = convertedImages
+          .sorted(by: { $0.key < $1.key })
+          .map({ $0.value })
+        completion(sortedImages)
+      })
+    }
 }
 
 
@@ -59,38 +90,8 @@ public class Image: ImageWrapper, Equatable {
 // MARK: - UIImage
 
 extension Image {
+ 
 
-
-
-  /// Resolve an array of Image
-  ///
-  /// - Parameters:
-  ///   - images: The array of Image
-  ///   - size: The target size for all images
-  ///   - completion: Called when operations completion
-  public static func resolve(images: [ImageWrapper], completion: @escaping ([UIImage?]) -> Void) {
-    let dispatchGroup = DispatchGroup()
-    var convertedImages = [Int: UIImage]()
-
-    for (index, image) in images.enumerated() {
-      dispatchGroup.enter()
-
-      image.resolve(completion: { resolvedImage in
-        if let resolvedImage = resolvedImage {
-          convertedImages[index] = resolvedImage
-        }
-
-        dispatchGroup.leave()
-      })
-    }
-
-    dispatchGroup.notify(queue: .main, execute: {
-      let sortedImages = convertedImages
-        .sorted(by: { $0.key < $1.key })
-        .map({ $0.value })
-      completion(sortedImages)
-    })
-  }
 }
 
 // MARK: - Equatable
