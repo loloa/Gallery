@@ -1,3 +1,4 @@
+
 import UIKit
 import Photos
 
@@ -68,7 +69,7 @@ class StackView: UIControl{
     indicator.startAnimating()
     UIView.animate(withDuration: 0.3, animations: {
       self.indicator.alpha = 1.0
-    }) 
+    })
   }
 
   func stopLoading() {
@@ -109,7 +110,7 @@ class StackView: UIControl{
 
   // MARK: - Reload
 
-  func reload(_ images: [Image], added: Bool = false) {
+  func reload(_ images: [ImageWrapper], added: Bool = false) {
     // Animate empty view
     if added {
       if let emptyView = imageViews.filter({ $0.image == nil }).first {

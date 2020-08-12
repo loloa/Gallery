@@ -1,3 +1,4 @@
+
 import UIKit
 import Photos
 
@@ -7,7 +8,7 @@ class ImagesController: UIViewController {
   lazy var gridView: GridView = self.makeGridView()
   lazy var stackView: StackView = self.makeStackView()
 
-  var items: [Image] = []
+  var items: [ImageWrapper] = []
   let library = ImagesLibrary()
   var selectedAlbum: Album?
   let once = Once()
@@ -157,7 +158,7 @@ extension ImagesController: PageAware {
 
 extension ImagesController: CartDelegate {
 
-  func cart(_ cart: Cart, didAdd image: Image, newlyTaken: Bool) {
+  func cart(_ cart: Cart, didAdd image: ImageWrapper, newlyTaken: Bool) {
     stackView.reload(cart.images, added: true)
     refreshView()
 
@@ -166,7 +167,7 @@ extension ImagesController: CartDelegate {
     }
   }
 
-  func cart(_ cart: Cart, didRemove image: Image) {
+  func cart(_ cart: Cart, didRemove image: ImageWrapper) {
     stackView.reload(cart.images)
     refreshView()
   }

@@ -1,10 +1,11 @@
+
 import UIKit
 import Photos
 
 class Album {
 
   let collection: PHAssetCollection
-  var items: [Image] = []
+  var items: [ImageWrapper] = []
 
   // MARK: - Initialization
 
@@ -18,7 +19,7 @@ class Album {
     let itemsFetchResult = PHAsset.fetchAssets(in: collection, options: Utils.fetchOptions())
     itemsFetchResult.enumerateObjects({ (asset, count, stop) in
       if asset.mediaType == .image {
-        self.items.append(Image(asset: asset))
+        self.items.append(ImageWrapper(asset: asset))
       }
     })
   }

@@ -29,7 +29,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Gallery:
-    :commit: ed7fb03aca30ac4633574e6cf27452fec8795770
+    :commit: fea9f05b2f3d02619fbb0ad49eb7344e4bc0f921
     :git: https://github.com/loloa/Gallery.git
 
 SPEC CHECKSUMS:

@@ -1,3 +1,4 @@
+
 import UIKit
 import Photos
 
@@ -34,7 +35,7 @@ class ImageCell: UICollectionViewCell {
     imageView.g_loadImage(asset)
   }
 
-  func configure(_ image: Image) {
+  func configure(_ image: ImageWrapper) {
     configure(image.asset)
   }
 

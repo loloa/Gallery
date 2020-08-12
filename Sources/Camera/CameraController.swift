@@ -94,7 +94,7 @@ class CameraController: UIViewController {
       self.cameraMan.switchCamera {
         UIView.animate(withDuration: 0.7, animations: {
           self.cameraView.rotateOverlayView.alpha = 0
-        }) 
+        })
       }
     })
   }
@@ -113,7 +113,7 @@ class CameraController: UIViewController {
     }, completion: { _ in
       UIView.animate(withDuration: 0.1, animations: {
         self.cameraView.shutterOverlayView.alpha = 0
-      }) 
+      })
     })
 
     self.cameraView.stackView.startLoading()
@@ -126,7 +126,7 @@ class CameraController: UIViewController {
       strongSelf.cameraView.stackView.stopLoading()
 
       if let asset = asset {
-        strongSelf.cart.add(Image(asset: asset), newlyTaken: true)
+        strongSelf.cart.add(ImageWrapper(asset: asset), newlyTaken: true)
       }
     }
   }
@@ -165,12 +165,12 @@ class CameraController: UIViewController {
 
 extension CameraController: CartDelegate {
 
-  func cart(_ cart: Cart, didAdd image: Image, newlyTaken: Bool) {
+  func cart(_ cart: Cart, didAdd image: ImageWrapper, newlyTaken: Bool) {
     cameraView.stackView.reload(cart.images, added: true)
     refreshView()
   }
 
-  func cart(_ cart: Cart, didRemove image: Image) {
+  func cart(_ cart: Cart, didRemove image: ImageWrapper) {
     cameraView.stackView.reload(cart.images)
     refreshView()
   }
@@ -212,3 +212,4 @@ extension CameraController: CameraManDelegate {
   }
 
 }
+
