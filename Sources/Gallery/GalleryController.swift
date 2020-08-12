@@ -32,35 +32,15 @@ public class GalleryController: UIViewController, PermissionControllerDelegate {
     super.viewDidLoad()
 
     setup()
-    
-    if let ctr = loadPhotosLibrary(){
-         g_addChildController(ctr)
-        ctr.pageDidShow()
-    }else {
-        let permissionController = makePermissionController()
-        g_addChildController(permissionController)
+ 
+    if let pagesController = makePagesController() {
+      g_addChildController(pagesController)
+    } else {
+      let permissionController = makePermissionController()
+      g_addChildController(permissionController)
     }
-
-//    if let pagesController = makePagesController() {
-//      g_addChildController(pagesController)
-//    } else {
-//      let permissionController = makePermissionController()
-//      g_addChildController(permissionController)
-//    }
   }
-    
-    
-
-    func loadPhotosLibrary() -> ImagesController? {
-           
-           guard Permission.Photos.status == .authorized else {
-                return nil
-              }
-           return makeImagesController()
-           
-       }
-
-
+ 
   public override var prefersStatusBarHidden : Bool {
     return true
   }
